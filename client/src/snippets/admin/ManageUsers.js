@@ -7,9 +7,11 @@ function PendingPlacementCoordinators() {
   //backend for pending Companies
   const [companydata, setCompanyData] = useState([]);
 
+  const serverURL = process.env.REACT_APP_SERVER_URL || process.env.PROXY_URL;
+
   const callAboutPage = async () => {
     try {
-      const res = await fetch("/newUserData", {
+      const res = await fetch(`${serverURL}/newUserData`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -36,7 +38,7 @@ function PendingPlacementCoordinators() {
     const user = "Placement Coordinator";
 
     try {
-      const res = await fetch("/verifyUser", {
+      const res = await fetch(`${serverURL}/verifyUser`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -69,7 +71,7 @@ function PendingPlacementCoordinators() {
     const user = "Placement Coordinator";
 
     try {
-      const res = await fetch("/deleteUsers", {
+      const res = await fetch(`${serverURL}/deleteUsers`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -153,7 +155,7 @@ function AllPlacementCoordinators() {
 
   const callAboutPage = async () => {
     try {
-      const res = await fetch("/verifyUserData", {
+      const res = await fetch(`${serverURL}/verifyUserData`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -180,7 +182,7 @@ function AllPlacementCoordinators() {
     const user = "Placement Coordinator";
 
     try {
-      const res = await fetch("/deleteUsers", {
+      const res = await fetch(`${serverURL}/deleteUsers`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -255,7 +257,7 @@ function PendingCompanies() {
 
   const callAboutPage = async () => {
     try {
-      const res = await fetch("/newUserData", {
+      const res = await fetch(`${serverURL}/newUserData`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -282,7 +284,7 @@ function PendingCompanies() {
     const user = "Company";
 
     try {
-      const res = await fetch("/verifyUser", {
+      const res = await fetch(`${serverURL}/verifyUser`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -316,7 +318,7 @@ function PendingCompanies() {
     const user = "Company";
 
     try {
-      const res = await fetch("/deleteUsers", {
+      const res = await fetch(`${serverURL}/deleteUsers`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -402,7 +404,7 @@ function AllCompanies() {
 
   const callAboutPage = async () => {
     try {
-      const res = await fetch("/verifyUserData", {
+      const res = await fetch(`${serverURL}/verifyUserData`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -429,7 +431,7 @@ function AllCompanies() {
     const user = "Company";
 
     try {
-      const res = await fetch("/deleteUsers", {
+      const res = await fetch(`${serverURL}/deleteUsers`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -506,7 +508,7 @@ function PendingStudents() {
 
   const callAboutPage = async () => {
     try {
-      const res = await fetch("/newUserData", {
+      const res = await fetch(`${serverURL}/newUserData`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -533,7 +535,7 @@ function PendingStudents() {
     const user = "Student";
 
     try {
-      const res = await fetch("/verifyUser", {
+      const res = await fetch(`${serverURL}/verifyUser`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -567,7 +569,7 @@ function PendingStudents() {
     const user = "Student";
 
     try {
-      const res = await fetch("/deleteUsers", {
+      const res = await fetch(`${serverURL}/deleteUsers`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -651,7 +653,7 @@ function AllStudents() {
 
   const callAboutPage = async () => {
     try {
-      const res = await fetch("/verifyUserData", {
+      const res = await fetch(`${serverURL}/verifyUserData`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -679,7 +681,7 @@ function AllStudents() {
     const user = "Student";
 
     try {
-      const res = await fetch("/deleteUsers", {
+      const res = await fetch(`${serverURL}/deleteUsers`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

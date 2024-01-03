@@ -4,13 +4,14 @@ import Header from "./Header";
 
 function AllNotifications() {
   //backend for all notifications
+  const serverURL = process.env.REACT_APP_SERVER_URL || process.env.PROXY_URL;
 
   const [notifyData, setNotifyData] = useState([]);
   const history = useHistory();
 
   const callAboutPage = async () => {
     try {
-      const res = await fetch("/getNotification", {
+      const res = await fetch(`${serverURL}/getNotification`, {
         method: "GET",
         headers: {
           Accept: "application/json",
@@ -125,7 +126,7 @@ function Notifications() {
     const { students, companies, title, message } = data;
     console.log(students, companies, title, message);
     try {
-      const res = await fetch("/notifyData", {
+      const res = await fetch(`${serverURL}/notifyData`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

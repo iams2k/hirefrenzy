@@ -4,13 +4,15 @@ import { Link, useHistory } from "react-router-dom";
 import Header from "./Header";
 
 function CurrentOpenings() {
+  const serverURL = process.env.REACT_APP_SERVER_URL || process.env.PROXY_URL;
+
   //Back end
   const [jobData, setJobData] = useState([]);
   const history = useHistory();
 
   const callAboutPage1 = async () => {
     try {
-      const res = await fetch("/jobopenings", {
+      const res = await fetch(`${serverURL}/jobopenings`, {
         method: "GET",
         headers: {
           Accept: "application/json",
@@ -37,7 +39,7 @@ function CurrentOpenings() {
   const [userData, setUserData] = useState({});
   const callAboutPage = async () => {
     try {
-      const res = await fetch("/userData", {
+      const res = await fetch(`${serverURL}/userData`, {
         method: "GET",
         headers: {
           Accept: "application/json",
@@ -72,7 +74,7 @@ function CurrentOpenings() {
   const comapny = async (value) => {
     const creator = value;
     try {
-      const res = await fetch("/companyDescription", {
+      const res = await fetch(`${serverURL}/companyDescription`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -102,7 +104,7 @@ function CurrentOpenings() {
     const { userName, name, email, phone, department } = userData;
 
     try {
-      const res = await fetch("/applyJob", {
+      const res = await fetch(`${serverURL}/applyJob`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

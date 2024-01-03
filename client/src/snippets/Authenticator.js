@@ -106,7 +106,7 @@ function Authenticator(props) {
 
     const { member, userName, name, email, password, rpassword } = signUser;
     try {
-      const res = await fetch("/registerUser", {
+      const res = await fetch(`${serverURL}/registerUser`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

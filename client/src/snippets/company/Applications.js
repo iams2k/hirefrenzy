@@ -15,10 +15,12 @@ function ApplicationStatus(props) {
   }
 }
 
+const serverURL = process.env.REACT_APP_SERVER_URL || process.env.PROXY_URL;
+
 const sendStatusToBackend = async (userName, jobId, status) => {
   //console.log("Status is " + status, userName, jobId);
   try {
-    const res = await fetch("/updateJobStatus", {
+    const res = await fetch(`${serverURL}/updateJobStatus`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -77,7 +79,7 @@ function CurrentApplications() {
   const [applicants, setApplicants] = useState([]);
 
   const callAboutPage = async () => {
-    const res = await fetch("/companyJob", {
+    const res = await fetch(`${serverURL}/companyJob`, {
       method: "GET",
       headers: {
         Accept: "application/json",
@@ -110,7 +112,7 @@ function CurrentApplications() {
     console.log(userName);
 
     try {
-      const res = await fetch("/gettingStudentData", {
+      const res = await fetch(`${serverURL}/gettingStudentData`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

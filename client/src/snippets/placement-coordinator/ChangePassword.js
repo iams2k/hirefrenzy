@@ -4,6 +4,7 @@ import Header from "./Header";
 
 function ChangePassword() {
   //backend
+  const serverURL = process.env.REACT_APP_SERVER_URL || process.env.PROXY_URL;
 
   const [userData, setUserData] = useState({
     cpassword: "",
@@ -28,7 +29,7 @@ function ChangePassword() {
     const { cpassword, npassword, rpassword } = userData;
 
     try {
-      const res = await fetch("/updatePassword", {
+      const res = await fetch(`${serverURL}/updatePassword`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

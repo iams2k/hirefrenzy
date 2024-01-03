@@ -4,11 +4,13 @@ import Header from "./Header";
 
 function CurrentOpenings() {
   //back end
+  const serverURL = process.env.REACT_APP_SERVER_URL || process.env.PROXY_URL;
+
   const [jobData, setJobData] = useState([]);
   const history = useHistory();
   const callAboutPage = async () => {
     try {
-      const res = await fetch("/jobopenings", {
+      const res = await fetch(`${serverURL}/jobopenings`, {
         method: "GET",
         headers: {
           Accept: "application/json",
@@ -37,7 +39,7 @@ function CurrentOpenings() {
     console.log(title);
 
     try {
-      const res = await fetch("/jobArchive", {
+      const res = await fetch(`${serverURL}/jobArchive`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -109,7 +111,7 @@ function AllOpenings() {
 
   const callAboutPage = async () => {
     try {
-      const res = await fetch("/alljobopenings", {
+      const res = await fetch(`${serverURL}/alljobopenings`, {
         method: "GET",
         headers: {
           Accept: "application/json",
@@ -187,7 +189,7 @@ function Openings() {
     const { jobId, title, ctc, description } = job;
 
     try {
-      const res = await fetch("/job", {
+      const res = await fetch(`${serverURL}/job`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

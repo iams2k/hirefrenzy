@@ -1,86 +1,86 @@
-import React, { useEffect,useState } from "react";
-import { Link, NavLink ,useHistory} from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, NavLink, useHistory } from "react-router-dom";
 import Header from "./Header";
 
 function Profile() {
+  const serverURL = process.env.REACT_APP_SERVER_URL || process.env.PROXY_URL;
 
   //backend
-  const [userData,setUserData] = useState({});
+  const [userData, setUserData] = useState({});
   const history = useHistory();
 
-  const callAboutPage = async ()=>{
-    try{
-      const res = await fetch('/userData',{
-        method:"GET",
-        headers:{
+  const callAboutPage = async () => {
+    try {
+      const res = await fetch(`${serverURL}/userData`, {
+        method: "GET",
+        headers: {
           Accept: "application/json",
-          "Content-Type": "application/json"
-          },
-          credentials:"include"
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
       });
 
       const data = await res.json();
       console.log(data);
       setUserData(data);
-            
 
-
-      if(!res.status ===200){
+      if (!res.status === 200) {
         const error = new Error(res.error);
-          throw error;
-        }
+        throw error;
+      }
+    } catch (err) {
+      console.log(err);
+      history.push("");
+    }
+  };
 
-        }catch(err){
-            console.log(err);
-            history.push('');
+  let name, value;
+  const handleInputs = (e) => {
+    console.log(e.target.value);
+    name = e.target.name;
+    value = e.target.value;
 
-        }
-  }
+    setUserData({ ...userData, [name]: value });
+  };
 
-  let name,value;
-  const handleInputs = (e) =>{
-      console.log(e.target.value);
-      name = e.target.name;
-      value=e.target.value;
-
-      setUserData({...userData,[name]:value});
-  }
-
-  const updateData =  async (e) =>{
+  const updateData = async (e) => {
     e.preventDefault();
 
-    const {userName,name,email,phone,address,companyLink}= userData;
+    const { userName, name, email, phone, address, companyLink } = userData;
 
-    try{
-
-      const res = await fetch("/update",{
-        method:"POST",
-        headers:{
-          "Content-Type": "application/json"
+    try {
+      const res = await fetch(`${serverURL}/update`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          userName,name,email,phone,address,companyLink
-        })
+          userName,
+          name,
+          email,
+          phone,
+          address,
+          companyLink,
+        }),
       });
 
       const data = await res.json();
 
-      if(res.status===202){
+      if (res.status === 202) {
         console.log("User updated successfully");
         window.alert("User Updated successfully");
-      }else{
+      } else {
         console.log("User updated unsuccessful");
         window.alert("User Updated unsuccessful");
       }
-
-    }catch(e){
+    } catch (e) {
       console.log(e);
     }
-  }
+  };
 
-  useEffect(()=>{
+  useEffect(() => {
     callAboutPage();
-  },[]);
+  }, []);
 
   return (
     <>
@@ -159,7 +159,11 @@ function Profile() {
               </div>
             </div>
           </div>
-          <button className="btn btn-primary float-end" type="submit" onClick={updateData}>
+          <button
+            className="btn btn-primary float-end"
+            type="submit"
+            onClick={updateData}
+          >
             Save Changes
           </button>
           <button className="btn btn-danger float-end me-3" type="button">

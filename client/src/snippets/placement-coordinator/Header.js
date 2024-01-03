@@ -4,13 +4,15 @@ import "../../css/Header.css";
 import crslogo from "../../img/crslogo.png";
 
 function Header(props) {
+  const serverURL = process.env.REACT_APP_SERVER_URL || process.env.PROXY_URL;
+
   //backend
   const [userData, setUserData] = useState({});
   const history = useHistory();
 
   const callAboutPage = async () => {
     try {
-      const res = await fetch("/userData", {
+      const res = await fetch(`${serverURL}/userData`, {
         method: "GET",
         headers: {
           Accept: "application/json",

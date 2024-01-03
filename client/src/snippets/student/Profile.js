@@ -4,13 +4,14 @@ import Header from "./Header";
 
 function Profile() {
   //back end
+  const serverURL = process.env.REACT_APP_SERVER_URL || process.env.PROXY_URL;
 
   const [userData, setUserData] = useState({});
   const history = useHistory();
 
   const callAboutPage = async () => {
     try {
-      const res = await fetch("/userData", {
+      const res = await fetch(`${serverURL}/userData`, {
         method: "GET",
         headers: {
           Accept: "application/json",
@@ -58,7 +59,7 @@ function Profile() {
     } = userData;
 
     try {
-      const res = await fetch("/update", {
+      const res = await fetch(`${serverURL}/update`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

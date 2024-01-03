@@ -2,11 +2,13 @@ import React, { useState, useEffect } from "react";
 import Header from "./Header";
 
 function Home() {
+  const serverURL = process.env.REACT_APP_SERVER_URL || process.env.PROXY_URL;
+
   const [userData, setUserData] = useState({});
 
   const callAboutPage = async () => {
     try {
-      const res = await fetch("/userData", {
+      const res = await fetch(`${serverURL}/userData`, {
         method: "GET",
         headers: {
           Accept: "application/json",

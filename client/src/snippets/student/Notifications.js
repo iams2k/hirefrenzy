@@ -4,13 +4,14 @@ import Header from "./Header";
 
 function AllNotifications() {
   //backend for all notifications
+  const serverURL = process.env.REACT_APP_SERVER_URL || process.env.PROXY_URL;
 
   const [notifyData, setNotifyData] = useState([]);
   const history = useHistory();
 
   const callAboutPage = async () => {
     try {
-      const res = await fetch("/getNotification", {
+      const res = await fetch(`${serverURL}/getNotification`, {
         method: "GET",
         headers: {
           Accept: "application/json",
