@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Link, NavLink, useHistory } from "react-router-dom";
 import Header from "./Header";
+const serverURL = process.env.REACT_APP_SERVER_URL || process.env.PROXY_URL;
 
 function ChangePassword() {
-  const serverURL = process.env.REACT_APP_SERVER_URL || process.env.PROXY_URL;
-
   //backend
 
   const [userData, setUserData] = useState({

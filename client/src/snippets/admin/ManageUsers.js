@@ -3,11 +3,12 @@ import { Link, NavLink, useParams } from "react-router-dom";
 import "../../css/ManageUsers.css";
 import Header from "./Header";
 
+const serverURL = process.env.REACT_APP_SERVER_URL || process.env.PROXY_URL;
+
 function PendingPlacementCoordinators() {
   //backend for pending Companies
-  const [companydata, setCompanyData] = useState([]);
 
-  const serverURL = process.env.REACT_APP_SERVER_URL || process.env.PROXY_URL;
+  const [companydata, setCompanyData] = useState([]);
 
   const callAboutPage = async () => {
     try {

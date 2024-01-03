@@ -3,9 +3,9 @@ import { Link, NavLink, useParams } from "react-router-dom";
 import "../../css/ManageUsers.css";
 import Header from "./Header";
 
-function PendingCompanies() {
-  const serverURL = process.env.REACT_APP_SERVER_URL || process.env.PROXY_URL;
+const serverURL = process.env.REACT_APP_SERVER_URL || process.env.PROXY_URL;
 
+function PendingCompanies() {
   //backend for pending Companies
   const [companydata, setCompanyData] = useState([]);
 

@@ -2,10 +2,9 @@ import React, { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 
 import Header from "./Header";
+const serverURL = process.env.REACT_APP_SERVER_URL || process.env.PROXY_URL;
 
 function CurrentOpenings() {
-  const serverURL = process.env.REACT_APP_SERVER_URL || process.env.PROXY_URL;
-
   //Back end
   const [jobData, setJobData] = useState([]);
   const history = useHistory();

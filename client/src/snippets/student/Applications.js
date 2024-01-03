@@ -14,10 +14,9 @@ function ApplicationStatus(props) {
     return <span className="badge bg-secondary rounded-pill">Applied</span>;
   }
 }
+const serverURL = process.env.REACT_APP_SERVER_URL || process.env.PROXY_URL;
 
 function CurrentApplications() {
-  const serverURL = process.env.REACT_APP_SERVER_URL || process.env.PROXY_URL;
-
   //backend for current applications
   const [applicants, setApplicants] = useState([]);
 

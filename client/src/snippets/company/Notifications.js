@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import Header from "./Header";
+const serverURL = process.env.REACT_APP_SERVER_URL || process.env.PROXY_URL;
 
 function AllNotifications() {
   //backend for all notifications
 
   const [notifyData, setNotifyData] = useState([]);
   const history = useHistory();
-  const serverURL = process.env.REACT_APP_SERVER_URL || process.env.PROXY_URL;
 
   const callAboutPage = async () => {
     try {

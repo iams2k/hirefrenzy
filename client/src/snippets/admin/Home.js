@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Header from "./Header";
+const serverURL = process.env.REACT_APP_SERVER_URL || process.env.PROXY_URL;
 
 function Home(props) {
   const [userData, setUserData] = useState({});
-
-  const serverURL = process.env.REACT_APP_SERVER_URL || process.env.PROXY_URL;
 
   const callAboutPage = async () => {
     try {

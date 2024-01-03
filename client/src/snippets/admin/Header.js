@@ -2,14 +2,13 @@ import React, { useState, useEffect } from "react";
 import { Link, NavLink, useHistory } from "react-router-dom";
 import "../../css/Header.css";
 import crslogo from "../../img/crslogo.png";
+const serverURL = process.env.REACT_APP_SERVER_URL || process.env.PROXY_URL;
 
 function Header(props) {
   //back end
 
   const [userData, setUserData] = useState({});
   const history = useHistory();
-
-  const serverURL = process.env.REACT_APP_SERVER_URL || process.env.PROXY_URL;
 
   const callAboutPage = async () => {
     try {
