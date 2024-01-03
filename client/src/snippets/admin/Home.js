@@ -16,14 +16,13 @@ function Home(props) {
         credentials: "include",
       });
 
+      if (!res.ok) {
+        throw new Error("Failed to fetch");
+      }
+
       const data = await res.json();
       console.log(data);
       setUserData(data);
-
-      if (!res.status === 200) {
-        const error = new Error(res.error);
-        throw error;
-      }
     } catch (err) {
       console.log(err);
     }
